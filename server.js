@@ -8,7 +8,7 @@ import db from './db.js'
 import personRoutes from './routes/personRoutes.js'
 import menuRoutes from './routes/menuRoutes.js'
 
-
+//new comment added for testing
 import bodyParser from 'body-parser'
 app.use(bodyParser.json())//req.body
 

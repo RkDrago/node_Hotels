@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const mongoURL = 'mongodb://localhost:27017/resturant';
+const mongoURL = process.env.DB-URL
 
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,

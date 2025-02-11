@@ -4,6 +4,9 @@
 import express from 'express'
 const app = express()
 import db from './db.js'
+import dotenv from 'dotenv'
+dotenv.config()
+const PORT = process.env.PORT || 3000
 
 import personRoutes from './routes/personRoutes.js'
 import menuRoutes from './routes/menuRoutes.js'
@@ -21,6 +24,7 @@ app.get('/', function (req, res) {
 app.use('/menu', menuRoutes)
 app.use('/person', personRoutes)
 
-app.listen(3000, () => {
+
+app.listen(PORT, () => {
     console.log("listening on port 3000")
 })

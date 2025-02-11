@@ -42,4 +42,41 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.put('/:id', async (req, res ) => {
+    try {
+        const id = req.params.id
+        const data = req.body
+        const response = await Menu.findByIdAndUpdate(id, data, {
+            new: true,
+            runValidators: true
+        })
+
+        if (!response) {
+            return res.status(404).json({ error: "Request not found!" })
+        }
+
+        console.log("Data is updated!")
+        res.status(200).json(response)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json("Internal server Error!")
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const id = req.params.id
+        const response = await Menu.findByIdAndDelete(id)
+        if (!response) {
+            return res.status(404).json({ error: "Request not found!" })
+        }
+        console.log("Data is deleted!")
+        res.status(200).json({ message: "Data is deleted successfully!" })
+        } catch (err) {
+            console.log(err)
+            res.status(500).json("Internal server Error!")
+        }
+})
+
+
 export default router
